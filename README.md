@@ -8,6 +8,12 @@ Cybozu Live data export tool with PHP
 
 http://dotnsf.blog.jp/archives/1068218167.html
 
+## Issue
+
+function fileDownload() works as expected only for image files.
+
+See API spec.: https://developer.cybozulive.com/doc/current/pub/fileDownload.html
+
 ## Reference
 
 https://developer.cybozulive.com/doc/current/

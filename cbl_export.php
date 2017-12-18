@@ -336,6 +336,19 @@ function fileDownload( $oauth, $file_id, $filepath ){
     //. save file
     file_put_contents( $filepath, $body );
 */
+    //. file download request
+    $image_extension = array( "tiff", "jpeg", "jpg", "png", "gif", "bmp" );
+    if( in_array( strtolower( pathinfo( $filepath )['extension'] ), $image_extension ) ){
+        $req = $oauth->sendRequest("https://api.cybozulive.com/api/fileDownload/V2", array("id"=>$file_id), 'GET');
+        $status = $req->getStatus();
+        $body = $req->getBody();
+        if( $status !== 200 ){
+            throw new Exception( $body, $status );
+        }
+
+        //. save file
+        file_put_contents( $filepath, $body );
+    }
 }
 
 ?>
