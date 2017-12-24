@@ -322,8 +322,6 @@ echo 'file_id = ' . $file_id . ', file_title = ' . $file_title . "\n";
 
 
 function fileDownload( $oauth, $file_id, $filepath ){
-    echo 'filepath = ' . $filepath . "\n";
-
 /* Error(Exception):exception 'Exception' with message 'oauth_problem=signature_invalid'
     //. file download request
     $req = $oauth->sendRequest("https://api.cybozulive.com/api/fileDownload/V2", array("id"=>$file_id), 'GET');
@@ -338,7 +336,8 @@ function fileDownload( $oauth, $file_id, $filepath ){
 */
     //. file download request
     $image_extension = array( "tiff", "jpeg", "jpg", "png", "gif", "bmp" );
-    if( in_array( strtolower( pathinfo( $filepath )['extension'] ), $image_extension ) ){
+    if( in_array( strtolower( pathinfo( $filepath, PATHINFO_EXTENSION ) ), $image_extension ) ){
+        echo 'filepath = ' . $filepath . "\n";
         $req = $oauth->sendRequest("https://api.cybozulive.com/api/fileDownload/V2", array("id"=>$file_id), 'GET');
         $status = $req->getStatus();
         $body = $req->getBody();
