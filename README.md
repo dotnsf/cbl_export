@@ -10,7 +10,7 @@ http://dotnsf.blog.jp/archives/1068218167.html
 
 ## Issue
 
-function fileDownload() works as expected only for image files.
+function fileDownload() does NOT work as expected even for image files.
 
 See API spec.: https://developer.cybozulive.com/doc/current/pub/fileDownload.html
 
